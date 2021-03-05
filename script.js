@@ -1,24 +1,24 @@
-window.onload = function() {
+
+window.onload = function Next() {
+   
     async function getData() {
         const response = await fetch ('https://thatsthespir.it/api ');
 
-        if (!response.ok) {
-            const message = ` Error: ${reponse.status}`
-            throw new Error(message);
-        }
-        const data = await response.json();
-        return data;
+        const blockquote = await response.json();
+        return blockquote;
     }
-    getData()
-
-        .then(data => {
-            document.getElementById('quote').innerHTML = data.quote;
-            document.getElementById("author").innerHTML = data.author;
+    getData().then(blockquote => {
+            document.getElementById('quote').innerHTML = blockquote.quote;
+            document.getElementById("author").innerHTML = blockquote.author;
             document.getElementById('img').innerHTML = `<img src='${
-                data.photo}' alt='photo'>`
-                console.log(data)
-        })
-        .catch(error => {
-            error.message;
+                blockquote.photo}' alt='photo'>`
+                
         });
-}
+        
+        document.getElementById("run").addEventListener("click", () => {
+            Next(); 
+        })
+            
+        
+};
+
